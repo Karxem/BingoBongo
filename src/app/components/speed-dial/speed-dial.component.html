@@ -1,0 +1,17 @@
+<div class="flex flex-col-reverse md:flex-col md:fixed md:bottom-12 md:right-12">
+    <ng-container *ngIf="isToggled">
+        <div class="flex flex-col items-center my-4 space-y-4">
+            <button type="button" class="relative w-[52px] h-[52px] rounded-full border border-gray-600 shadow-sm hover:text-white text-gray-400 bg-gray-700 hover:bg-gray-600">
+                <fa-icon [icon]="faTrophy" size="xl"></fa-icon>
+                <span class="absolute block mb-px text-sm font-medium -translate-y-1/2 -left-14 top-1/2">Winners</span>
+            </button>
+            <button type="button" class="relative w-[52px] h-[52px] rounded-full border border-gray-600 shadow-sm hover:text-white text-gray-400 bg-gray-700 hover:bg-gray-600">
+                <fa-icon [icon]="faArrowRightToBracket" size="xl"></fa-icon>
+                <span class="absolute block mb-px text-sm font-medium -translate-y-1/2 -left-14 top-1/2">Logout</span>
+            </button>
+        </div>
+    </ng-container>
+    <button type="button" (click)="toggleDial()" class="flex items-center justify-center text-white rounded-full w-14 h-14 bg-blue-600 hover:bg-blue-700">
+        <fa-icon [icon]="faPlus" size="xl" [ngClass]="{ 'rotate-45': isToggled }"></fa-icon>
+    </button>
+</div>
