@@ -1,0 +1,27 @@
+<ng-container *ngIf="isShown">
+    <div
+  class="fixed z-50 flex md:flex-row justify-between w-[calc(80%-2rem)] p-4 -translate-x-1/2 border rounded-lg shadow-sm lg:max-w-xl left-1/2 top-6 bg-neutral-700 border-neutral-600"
+>
+  <div
+    class="flex flex-col items-start mb-3 mr-4 md:items-center md:flex-row md:mb-0"
+  >
+    <p class="md:pr-4 md:mr-4 md:border-r mb-2 md:mb-0 border-neutral-600">
+      <span
+        class="self-center text-lg font-semibold whitespace-nowrap text-blue-400"
+        >Bingo</span
+      >
+    </p>
+    <p class="self-center text-sm font-normal text-gray-300">Glückwunsch!<br>Du hast ein {{ bingoText }}</p>
+  </div>
+  <div class="flex md:items-center flex-shrink-0">
+    <button
+      type="button"
+      (click)="testButton()"
+      class="flex-shrink-0 inline-flex justify-center w-7 h-7 items-center text-blue-400 rounded-lg text-sm p-1.5 hover:bg-blue-600 hover:text-white"
+    >
+      <fa-icon [icon]="faRetweet" size="xl"></fa-icon>
+    </button>
+  </div>
+</div>
+
+</ng-container>

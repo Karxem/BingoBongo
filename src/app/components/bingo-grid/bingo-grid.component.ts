@@ -1,14 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Word } from 'src/app/word.model';
 import { WordsService } from 'src/app/words.service';
+import { WinComponent } from '../win/win.component';
 
 @Component({
   selector: 'app-bingo-grid',
   templateUrl: './bingo-grid.component.html',
+  standalone: true,
+  imports: [CommonModule, WinComponent]
 })
 export class BingoGridComponent implements OnInit {
-  bingoGrid: Word[][] = [];
-  bingoText: string = '';
+  public bingoGrid: Word[][] = [];
+  public bingoText: string = '';
+  public isBingo: boolean = false;
 
   constructor(private wordsService: WordsService) {}
 
@@ -42,17 +47,23 @@ export class BingoGridComponent implements OnInit {
     // Check rows for bingo
     for (let i = 0; i < 5; i++) {
       if (this.bingoGrid[i].every((word) => word.clicked)) {
-        this.bingoText = 'Bingo in row ' + (i + 1);
+        this.bingoText = 'Bingo in Zeile ' + (i + 1);
+        this.isBingo = true;
         return;
       }
+
+      this.isBingo;
     }
 
     // Check columns for bingo
     for (let i = 0; i < 5; i++) {
       if (this.bingoGrid.every((row) => row[i].clicked)) {
-        this.bingoText = 'Bingo in column ' + (i + 1);
+        this.bingoText = 'Bingo in Spalte ' + (i + 1);
+        this.isBingo = true;
         return;
       }
+
+      this.isBingo;
     }
   }
 }
