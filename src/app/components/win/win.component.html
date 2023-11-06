@@ -1,6 +1,6 @@
 <ng-container *ngIf="isShown">
     <div
-  class="fixed z-50 flex md:flex-row justify-between w-[calc(80%-2rem)] p-4 -translate-x-1/2 border rounded-lg shadow-sm lg:max-w-xl left-1/2 top-6 bg-neutral-700 border-neutral-600"
+  class="absolute flex md:flex-row justify-between w-[calc(80%-2rem)] md:w-[calc(25%-2rem)] p-2 -translate-x-1/2 border rounded-lg shadow-sm lg:max-w-lg left-1/2 top-16 bg-neutral-700 border-neutral-600"
 >
   <div
     class="flex flex-col items-start mb-3 mr-4 md:items-center md:flex-row md:mb-0"
@@ -11,7 +11,7 @@
         >Bingo</span
       >
     </p>
-    <p class="self-center text-sm font-normal text-gray-300">Glückwunsch!<br>Du hast ein {{ bingoText }}</p>
+    <p class="self-center text-sm font-normal text-gray-300">Glückwunsch! <br class="block md:hidden">Du hast ein {{ bingoText }}</p>
   </div>
   <div class="flex md:items-center flex-shrink-0">
     <button
