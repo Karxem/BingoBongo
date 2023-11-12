@@ -1,12 +1,12 @@
 <ng-container *ngIf="isBingo">
   <app-win [isShown]="isBingo" [bingoText]="bingoText"></app-win>
 </ng-container>
-<div class="flex flex-col select-none justify-center items-center">
+<div class="flex flex-col items-center justify-center p-5 shadow-inner select-none bg-neutral-200 rounded-xl">
   <div *ngFor="let row of bingoGrid; let i = index" class="flex">
     <div
       *ngFor="let word of row; let j = index"
-      [ngClass]="{ '!bg-blue-950 !border-gray-500': word.clicked }"
-      class="w-[66px] h-[66px] md:w-36 md:h-36 border-2 border-white flex justify-center items-center m-1 hover:bg-blue-600 shadow-inner bg-blue-800 rounded-lg"
+      [ngClass]="{ '!bg-blue-800 !border-blue-700': word.clicked }"
+      class="w-[66px] h-[66px] md:w-36 md:h-36 border-4 border-blue-300 flex justify-center items-center m-1 hover:bg-blue-500 shadow-inner bg-blue-600 rounded-lg"
       (click)="toggleCell(word)"
     >
       <p
