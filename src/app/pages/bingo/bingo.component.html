@@ -1,5 +1,2 @@
-<div
-  class="flex flex-col items-center h-screen bg-neutral-300 md:justify-center gap-y-3"
->
-  <app-bingo-grid></app-bingo-grid>
-</div>
+<app-bingo-grid [color]="activeColor"/>
+<app-drawer (chooseColorEvent)="changeColor($event)"/>
