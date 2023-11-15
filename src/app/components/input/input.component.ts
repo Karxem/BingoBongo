@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
 })
-export class InputComponent {}
+export class InputComponent {
+  @Input({ required: true }) label: string = '';
+  @Input({required: true }) placeholder: string = '';
+  @Input({ required: true }) inputType: string = 'text';
+}
