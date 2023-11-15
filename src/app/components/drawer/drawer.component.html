@@ -1,0 +1,175 @@
+<button
+  type="button"
+  (click)="toggleDrawer()"
+  class="rounded-r-lg bg-neutral-900 border-r-2 border-y-2 text-sm w-10 h-10 absolute top-2.5 inline-flex items-center justify-center hover:bg-gray-600 hover:text-white"
+  [ngClass]="{
+    'border-red-500': activeColor === 'red',
+    'border-green-500': activeColor === 'green',
+    'border-blue-500': activeColor === 'blue',
+    'border-gray-400': activeColor === 'default',
+    'border-yellow-500': activeColor === 'yellow',
+    'border-purple-500': activeColor === 'purple'
+  }"
+>
+  <fa-icon class="text-gray-400" size="xl" [icon]="faArrowRight" />
+</button>
+<div
+  id="drawer-navigation"
+  class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform border-r-2 bg-neutral-900"
+  [ngClass]="{
+    '-translate-x-full': !isToggled,
+    'border-red-500': activeColor === 'red',
+    'border-green-500': activeColor === 'green',
+    'border-blue-500': activeColor === 'blue',
+    'border-gray-400': activeColor === 'default',
+    'border-yellow-500': activeColor === 'yellow',
+    'border-purple-500': activeColor === 'purple'
+  }"
+  tabindex="-1"
+>
+  <h5
+    id="drawer-navigation-label"
+    class="text-base font-semibold text-gray-400 uppercase"
+  >
+    Bingo Bongo
+  </h5>
+  <button
+    type="button"
+    (click)="toggleDrawer()"
+    class="rounded-lg bg-transparent text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center hover:bg-gray-600 hover:text-white"
+  >
+    <fa-icon class="text-gray-400" size="xl" [icon]="faXMark" />
+  </button>
+  <div class="py-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a
+          href="#"
+          class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group"
+        >
+          <fa-icon
+            class="flex-shrink text-gray-400 transition duration-7 group-hover:text-white"
+            size="lg"
+            [icon]="faEarthEurope"
+          />
+          <span class="ms-3">Statistik</span>
+        </a>
+      </li>
+      <li>
+        <button
+          type="button"
+          (click)="toggleColors()"
+          class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group hover:bg-gray-700"
+        >
+          <fa-icon
+            class="flex-shrink text-gray-400 transition duration-7 group-hover:text-white"
+            size="lg"
+            [icon]="faBrush"
+          />
+          <span class="flex-1 text-left ms-3 rtl:text-right whitespace-nowrap"
+            >Farbschema</span
+          >
+          <fa-icon
+            class="text-gray-400"
+            size="lg"
+            [ngClass]="{ 'rotate-180': isColors }"
+            [icon]="faChevronDown"
+          />
+        </button>
+        <ul id="dropdown-example" class="py-2 space-y-2" *ngIf="isColors">
+          <li>
+            <button
+              (click)="onColorChange('red')"
+              class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-9 group hover:bg-gray-700"
+            >
+              <fa-icon class="pr-2 text-red-600" size="sm" [icon]="faDroplet" />
+              Rot
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="onColorChange('green')"
+              class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-9 group hover:bg-gray-700"
+            >
+              <fa-icon
+                class="pr-2 text-green-600"
+                size="sm"
+                [icon]="faDroplet"
+              />
+              Grün
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="onColorChange('blue')"
+              class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-9 group hover:bg-gray-700"
+            >
+              <fa-icon
+                class="pr-2 text-blue-600"
+                size="sm"
+                [icon]="faDroplet"
+              />
+              Blau
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="onColorChange('purple')"
+              class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-9 group hover:bg-gray-700"
+            >
+              <fa-icon
+                class="pr-2 text-purple-600"
+                size="sm"
+                [icon]="faDroplet"
+              />
+              Lila
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="onColorChange('yellow')"
+              class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-9 group hover:bg-gray-700"
+            >
+              <fa-icon
+                class="pr-2 text-yellow-400"
+                size="sm"
+                [icon]="faDroplet"
+              />
+              Gelb
+            </button>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group"
+        >
+          <fa-icon
+            class="flex-shrink text-gray-400 transition duration-7 group-hover:text-white"
+            size="lg"
+            [icon]="faArrowRightToBracket"
+          />
+          <span class="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group"
+        >
+          <fa-icon
+            class="flex-shrink text-gray-400 transition duration-7 group-hover:text-white"
+            size="lg"
+            [icon]="faFileSignature"
+          />
+          <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
+        </a>
+      </li>
+    </ul>
+    <span class="fixed text-gray-400 bottom-5 left-5">
+      <fa-icon size="sm" [icon]="faCode" />
+      <a class="pl-2" href="https://www.github.com/karxem">Coded by Karxem</a>
+    </span>
+  </div>
+</div>
