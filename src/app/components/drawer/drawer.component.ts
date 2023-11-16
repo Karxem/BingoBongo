@@ -44,7 +44,6 @@ constructor( private storageService: StorageService ) {}
 
   ngOnInit(): void {
     this.activeColor = this.storageService.getItem('activeColor') as Color;
-    console.log(this.activeColor + '--')
   }
 
   public toggleDrawer(): void {

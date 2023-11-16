@@ -44,7 +44,12 @@ export class BingoGridComponent implements OnInit {
     }
 
     this.color = this.storageService.getItem('activeColor') as Color;
-    console.log(this.color);
+
+    if (!this.storageService.getItem('isBingo')) {
+      this.storageService.setItem('isBingo', this.isBingo);
+    }
+
+    this.isBingo = this.storageService.getItem('isBingo') as unknown as boolean;
   }
 
   generateBingoGrid(words: Word[]): void {
@@ -91,6 +96,7 @@ export class BingoGridComponent implements OnInit {
       if (this.bingoGrid.every((row) => row[i].clicked)) {
         this.bingoText = 'Bingo in Spalte ' + (i + 1);
         this.isBingo = true;
+        this.storageService.setItem('isBingo', true);
         return;
       }
 
