@@ -1,7 +1,7 @@
 <button
   type="button"
   (click)="toggleDrawer()"
-  class="rounded-r-lg bg-neutral-900 border-r-2 border-y-2 text-sm w-10 h-10 absolute top-2.5 inline-flex items-center justify-center hover:bg-gray-600 hover:text-white"
+  class="rounded-r-lg bg-neutral-900 border-r-2 border-y-2 text-sm w-8 h-8 absolute top-5 inline-flex items-center justify-center hover:bg-gray-600 hover:text-white"
   [ngClass]="{
     'border-red-500': activeColor === 'red',
     'border-green-500': activeColor === 'green',
@@ -151,19 +151,6 @@
             [icon]="faArrowRightToBracket"
           />
           <span class="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group"
-        >
-          <fa-icon
-            class="flex-shrink text-gray-400 transition duration-7 group-hover:text-white"
-            size="lg"
-            [icon]="faFileSignature"
-          />
-          <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
         </a>
       </li>
     </ul>
