@@ -17,7 +17,6 @@ export class BingoGridComponent implements OnInit {
   @Input({ required: true }) color: Color = 'default';
   private key: string = 'grid';
   public bingoGrid: Word[][] = [];
-  public bingoText: string = '';
 
   constructor(
     private wordsService: WordsService,
@@ -66,8 +65,8 @@ export class BingoGridComponent implements OnInit {
 
   toggleCell(word: Word): void {
     // Block all when there is a bingo
-    if (this.checkForBingo()) {
-      console.log('A: ' + this.checkForBingo());
+    if (this.checkForBingo().isBingo) {
+      console.log('A: ' + this.checkForBingo().isBingo);
       return;
     }
 
@@ -106,13 +105,13 @@ export class BingoGridComponent implements OnInit {
     }
   }
 
-  public checkForBingo(): boolean {
+  public checkForBingo(): Bingo {
     if (!this.storageService.getItem('bingo')) {
-      return false;
+      return { isBingo: false, bingoText: 'Error Occured!', bingoFields: [] };
     }
 
     const bingo = this.storageService.getItem('bingo') as unknown as Bingo;
     console.log(bingo);
-    return bingo.isBingo;
+    return bingo;
   }
 }

@@ -1,9 +1,10 @@
+<ng-container *ngIf="checkForBingo().isBingo">
+  <app-win [bingoText]="checkForBingo().bingoText" class="absolute z-20"></app-win>
+</ng-container>
 <div
-  class="flex flex-col items-center justify-center p-5 shadow-inner select-none"
+  class="flex flex-col items-center justify-center h-screen shadow-inner select-none z-0"
+  [ngClass]="{ 'blur-sm': checkForBingo().isBingo }"
 >
-  <ng-container *ngIf="checkForBingo()">
-    <app-win [bingoText]="bingoText" class="fixed"></app-win>
-  </ng-container>
   <div *ngFor="let row of bingoGrid; let i = index" class="flex">
     <div
       *ngFor="let word of row; let j = index"
@@ -18,9 +19,11 @@
         'border-green-300 bg-green-600 hover:bg-green-500': color === 'green',
         'border-blue-300 bg-blue-600 hover:bg-blue-500': color === 'blue',
         'border-red-300 bg-red-600 hover:bg-red-500': color === 'red',
-        'border-yellow-200 bg-yellow-500 hover:bg-yellow-300': color === 'yellow',
-        'border-purple-300 bg-purple-600 hover:bg-purple-500': color === 'purple',
-        'pointer-events-none': checkForBingo(),
+        'border-yellow-200 bg-yellow-500 hover:bg-yellow-300':
+          color === 'yellow',
+        'border-purple-300 bg-purple-600 hover:bg-purple-500':
+          color === 'purple',
+        'pointer-events-none': checkForBingo().isBingo
       }"
       class="w-[66px] h-[66px] md:w-36 md:h-36 border-4 flex justify-center items-center m-1 rounded-lg shadow-inner"
       (click)="toggleCell(word)"
