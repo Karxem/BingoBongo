@@ -5,12 +5,13 @@ import { Word } from '../../shared/word.model';
 import { WordsService } from '../../shared/words.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { Color } from 'src/app/shared/color.model';
+import { WinComponent } from '../win/win.component';
 
 @Component({
   selector: 'app-bingo-grid',
   templateUrl: './bingo-grid.component.html',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, WinComponent],
 })
 export class BingoGridComponent implements OnInit {
   @Input({ required: true }) color: Color = 'default';

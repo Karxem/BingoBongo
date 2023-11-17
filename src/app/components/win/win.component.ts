@@ -10,12 +10,5 @@ import { faRetweet } from '@fortawesome/free-solid-svg-icons';
   imports: [CommonModule, FontAwesomeModule]
 })
 export class WinComponent {
-  @Input({ required: true }) bingoText: string = "";
-  @Input({ required: true }) isShown: boolean = false;
-
-  public faRetweet = faRetweet;
-
-  public testButton(): void {
-    console.log("Reload button was pressed");
-  }
+  @Input({ required: true }) bingoText = '';
 }
