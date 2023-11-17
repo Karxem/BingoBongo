@@ -17,7 +17,7 @@
         'border-red-300 bg-red-600 hover:bg-red-500': color === 'red',
         'border-yellow-200 bg-yellow-500 hover:bg-yellow-300': color === 'yellow',
         'border-purple-300 bg-purple-600 hover:bg-purple-500': color === 'purple',
-        'pointer-events-none': isBingo,
+        'pointer-events-none': checkForBingo(),
       }"
       class="w-[66px] h-[66px] md:w-36 md:h-36 border-4 flex justify-center items-center m-1 rounded-lg shadow-inner"
       (click)="toggleCell(word)"

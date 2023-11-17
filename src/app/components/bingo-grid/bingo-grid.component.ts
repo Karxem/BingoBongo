@@ -1,3 +1,4 @@
+import { Bingo } from './../../shared/bingo.model';
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Word } from '../../shared/word.model';
@@ -16,7 +17,6 @@ export class BingoGridComponent implements OnInit {
   private key: string = 'grid';
   public bingoGrid: Word[][] = [];
   public bingoText: string = '';
-  public isBingo: boolean = false;
 
   constructor(
     private wordsService: WordsService,
@@ -34,7 +34,6 @@ export class BingoGridComponent implements OnInit {
 
         if (this.bingoGrid && !this.storageService.getItem(this.key)) {
           this.storageService.setItem(this.key, this.bingoGrid);
-          console.log('Grid set: ' + this.storageService.getItem(this.key));
         }
       });
     }
@@ -44,12 +43,6 @@ export class BingoGridComponent implements OnInit {
     }
 
     this.color = this.storageService.getItem('activeColor') as Color;
-
-    if (!this.storageService.getItem('isBingo')) {
-      this.storageService.setItem('isBingo', this.isBingo);
-    }
-
-    this.isBingo = this.storageService.getItem('isBingo') as unknown as boolean;
   }
 
   generateBingoGrid(words: Word[]): void {
@@ -72,7 +65,8 @@ export class BingoGridComponent implements OnInit {
 
   toggleCell(word: Word): void {
     // Block all when there is a bingo
-    if (this.isBingo) {
+    if (this.checkForBingo()) {
+      console.log('A: ' + this.checkForBingo());
       return;
     }
 
@@ -81,26 +75,43 @@ export class BingoGridComponent implements OnInit {
     // Check rows for bingo
     for (let i = 0; i < 5; i++) {
       if (this.bingoGrid[i].every((word) => word.clicked)) {
-        this.bingoText = 'Bingo in Zeile ' + (i + 1);
-        this.isBingo = true;
-        this.storageService.setItem('isBingo', true);
+        const bingo: Bingo = {
+          isBingo: true,
+          bingoText: 'Zeile ' + (i + 1),
+          bingoFields: this.bingoGrid[i],
+        }; 
+
+        this.storageService.setItem('bingo', bingo)
         return;
       }
 
-      this.isBingo;
       this.storageService.setItem('grid', this.bingoGrid);
     }
 
     // Check columns for bingo
     for (let i = 0; i < 5; i++) {
       if (this.bingoGrid.every((row) => row[i].clicked)) {
-        this.bingoText = 'Bingo in Spalte ' + (i + 1);
-        this.isBingo = true;
-        this.storageService.setItem('isBingo', true);
+        const bingo: Bingo = {
+          isBingo: true,
+          bingoText: 'Spalte ' + (i + 1),
+          bingoFields: this.bingoGrid[i],
+        }; 
+
+        this.storageService.setItem('bingo', bingo)
         return;
       }
 
-      this.isBingo;
+      this.storageService.setItem('grid', this.bingoGrid);
     }
+  }
+
+  public checkForBingo(): boolean {
+    if (!this.storageService.getItem('bingo')) {
+      return false;
+    }
+
+    const bingo = this.storageService.getItem('bingo') as unknown as Bingo;
+    console.log(bingo);
+    return bingo.isBingo;
   }
 }
