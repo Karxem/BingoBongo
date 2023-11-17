@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faRetweet } from '@fortawesome/free-solid-svg-icons';
+import { faRetweet, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-win',
@@ -11,4 +11,6 @@ import { faRetweet } from '@fortawesome/free-solid-svg-icons';
 })
 export class WinComponent {
   @Input({ required: true }) bingoText = '';
+
+  public faTrophy = faTrophy;
 }
