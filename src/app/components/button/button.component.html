@@ -1,1 +1,14 @@
-<p>button works!</p>
+<button
+  type="button"
+  class="py-2.5 px-5 me-2 mb-2 text-sm font-bold rounded-full border-2 hover:text-white text-gray-400"
+  [ngClass]="{
+    'bg-neutral-700 border-gray-400 hover:bg-neutral-600': activeColor === 'default',
+    'bg-red-800 border-red-400 hover:bg-red-600': activeColor === 'red',
+    'bg-blue-800 border-blue-400 hover:bg-blue-600': activeColor === 'blue',
+    'bg-green-800 border-green-400 hover:bg-green-600': activeColor === 'green',
+    'bg-purple-800 border-purple-400 hover:bg-purple-600': activeColor === 'purple',
+    'bg-yellow-800 border-yellow-400 hover:bg-yellow-600': activeColor === 'yellow'
+  }"
+>
+  {{ label }}
+</button>
