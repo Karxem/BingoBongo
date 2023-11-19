@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StorageService } from './shared/storage.service';
 
 @Component({
   selector: 'app-root',

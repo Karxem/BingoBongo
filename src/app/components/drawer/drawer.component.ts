@@ -13,6 +13,7 @@ import {
   faUsers,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
 import { Color } from 'src/app/shared/color.model';
 import { StorageService } from 'src/app/shared/storage.service';
 
@@ -40,7 +41,7 @@ export class DrawerComponent implements OnInit {
   public isToggled: boolean = false;
   public isColors: boolean = false;
 
-constructor( private storageService: StorageService ) {}
+  constructor(private storageService: StorageService, public authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.activeColor = this.storageService.getItem('activeColor') as Color;

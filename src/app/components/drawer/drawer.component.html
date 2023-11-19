@@ -141,8 +141,8 @@
         </ul>
       </li>
       <li>
-        <a
-          href="#"
+        <button
+          (click)="authService.logout()"
           class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group"
         >
           <fa-icon
@@ -151,7 +151,7 @@
             [icon]="faArrowRightToBracket"
           />
           <span class="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
-        </a>
+      </button>
       </li>
     </ul>
     <span class="fixed text-gray-400 bottom-5 left-5">
