@@ -1,3 +1,18 @@
-<ng-container *ngIf="authService.isLoggedIn">
-  <p class="text-white text-5xl">Du bist eingeloggt als {{ username }}</p>
+<ng-container *ngIf="authService.isLoggedIn()?.isLoggedIn; else notLoggedIn">
+  <div class="flex flex-col items-center justify-center h-screen">
+    <h1 class="pb-10 text-white text-8xl">Bingo Bongo</h1>
+    <p class="pb-5 text-5xl text-white">
+      Du bist eingeloggt als {{ authService.isLoggedIn().username }}
+    </p>
+    <app-button (click)="redirectService.redirect('bingo')" label="Spielen" />
+  </div>
+  <app-drawer (chooseColorEvent)="changeColor($event)" />
 </ng-container>
+
+<ng-template #notLoggedIn>
+  <div class="flex flex-col items-center justify-center h-screen">
+    <h1 class="pb-10 text-white text-8xl">Bingo Bongo</h1>
+    <p class="pb-5 text-3xl text-white">Du bist nicht eingeloggt</p>
+    <app-button (click)="redirectService.redirect('login')" label="Zum Login" />
+  </div>
+</ng-template>

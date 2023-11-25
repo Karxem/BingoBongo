@@ -6,18 +6,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from "./components/button/button.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+    ],
+    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ButtonComponent
+    ]
 })
 export class AppModule { }

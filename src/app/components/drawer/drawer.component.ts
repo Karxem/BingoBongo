@@ -10,11 +10,13 @@ import {
   faDroplet,
   faEarthEurope,
   faFileSignature,
+  faUserAstronaut,
   faUsers,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticationService } from 'src/app/shared/authentication.service';
 import { Color } from 'src/app/shared/color.model';
+import { RedirectionService } from 'src/app/shared/redirection.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
 @Component({
@@ -36,12 +38,13 @@ export class DrawerComponent implements OnInit {
   public faFileSignature = faFileSignature;
   public faUsers = faUsers;
   public faArrowRight = faArrowRight;
+  public faUserAstronaut = faUserAstronaut;
 
   public activeColor: Color = 'default';
   public isToggled: boolean = false;
   public isColors: boolean = false;
 
-  constructor(private storageService: StorageService, public authService: AuthenticationService) {}
+  constructor(private storageService: StorageService, public authService: AuthenticationService, public redirectService: RedirectionService) {}
 
   ngOnInit(): void {
     this.activeColor = this.storageService.getItem('activeColor') as Color;

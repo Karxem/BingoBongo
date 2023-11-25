@@ -15,7 +15,7 @@
         'bg-blue-700 border-blue-400': activeColor === 'blue',
         'bg-purple-700 border-purple-400': activeColor === 'purple',
         'bg-yellow-700 border-yellow-400': activeColor === 'yellow'
-        }"
+      }"
       placeholder="Name"
       [(ngModel)]="username"
       name="username"
@@ -31,12 +31,12 @@
       id="input"
       class="border-2 text-sm rounded-lg block w-80 p-2.5 placeholder-gray-400 text-white outline-none"
       [ngClass]="{
-      'bg-neutral-700 border-gray-400': activeColor === 'default',
-      'bg-red-700 border-red-400': activeColor === 'red',
-      'bg-green-700 border-green-400': activeColor === 'green',
-      'bg-blue-700 border-blue-400': activeColor === 'blue',
-      'bg-purple-700 border-purple-400': activeColor === 'purple',
-      'bg-yellow-700 border-yellow-400': activeColor === 'yellow'
+        'bg-neutral-700 border-gray-400': activeColor === 'default',
+        'bg-red-700 border-red-400': activeColor === 'red',
+        'bg-green-700 border-green-400': activeColor === 'green',
+        'bg-blue-700 border-blue-400': activeColor === 'blue',
+        'bg-purple-700 border-purple-400': activeColor === 'purple',
+        'bg-yellow-700 border-yellow-400': activeColor === 'yellow'
       }"
       placeholder="Passwort"
       [(ngModel)]="password"
@@ -44,5 +44,14 @@
       required
     />
   </div>
-  <app-button (click)="login()" label="Einloggen"></app-button>
+  <p class="text-gray-500">
+    Noch keinen Account?
+    <button
+      class="text-white hover:text-gray-400"
+      [routerLink]="'/register'"
+    >
+      Registirieren
+    </button>
+  </p>
+  <app-button (click)="login()" label="Einloggen" />
 </div>

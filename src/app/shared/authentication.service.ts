@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Login } from './login.model';
+import { RedirectionService } from './redirection.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AuthenticationService {
   private loggedIn: Login = { isLoggedIn: false, username: '' };
   apiUrl: string = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private redirectService: RedirectionService) {}
 
   login(username: string, password: string): Observable<any> {
     const userData = { username, password };
@@ -45,8 +46,8 @@ export class AuthenticationService {
   }
 
   logout(): void {
+    this.redirectService.redirect('/');
     this.loggedIn.isLoggedIn = false;
-    console.log('Logout');
   }
 
   isLoggedIn(): Login {

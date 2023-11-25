@@ -1,7 +1,7 @@
 <button
   type="button"
   (click)="toggleDrawer()"
-  class="rounded-r-lg bg-neutral-900 border-r-2 border-y-2 text-sm w-8 h-8 absolute top-5 inline-flex items-center justify-center hover:bg-gray-600 hover:text-white"
+  class="absolute inline-flex items-center justify-center w-8 h-8 text-sm border-r-2 rounded-r-lg bg-neutral-900 border-y-2 top-5 hover:bg-gray-600 hover:text-white"
   [ngClass]="{
     'border-red-500': activeColor === 'red',
     'border-green-500': activeColor === 'green',
@@ -42,6 +42,19 @@
   </button>
   <div class="py-4 overflow-y-auto">
     <ul class="space-y-2 font-medium">
+      <li>
+        <button
+          (click)="redirectService.redirect('')"
+          class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group"
+        >
+          <fa-icon
+            class="flex-shrink text-gray-400 transition duration-7 group-hover:text-white"
+            size="lg"
+            [icon]="faUserAstronaut"
+          />
+          <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+        </button>
+      </li>
       <li>
         <a
           href="#"
@@ -151,7 +164,7 @@
             [icon]="faArrowRightToBracket"
           />
           <span class="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
-      </button>
+        </button>
       </li>
     </ul>
     <span class="fixed text-gray-400 bottom-5 left-5">
